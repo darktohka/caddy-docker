@@ -10,7 +10,7 @@ RUN \
   else \
   export GOARCH="amd64"; \
   fi && \
-  xcaddy build \
+  xcaddy build master \
   --with github.com/caddy-dns/cloudflare \
   --with github.com/WeidiDeng/caddy-cloudflare-ip \
   --with github.com/mholt/caddy-dynamicdns
