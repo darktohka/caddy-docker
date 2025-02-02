@@ -15,17 +15,13 @@ RUN \
   --with github.com/WeidiDeng/caddy-cloudflare-ip \
   --with github.com/mholt/caddy-dynamicdns
 
-FROM alpine:edge
+FROM scratch
 
 ENV \
   XDG_CONFIG_HOME=/config \
   XDG_DATA_HOME=/data
 
-RUN \
-  apk add --no-cache ca-certificates libcap mailcap && \
-  mkdir -p /config/caddy /data/caddy
+COPY --from=builder /usr/bin/caddy /caddy
 
-COPY --from=builder /usr/bin/caddy /usr/bin/caddy
-
-WORKDIR /srv
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+WORKDIR /
+CMD ["/caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
