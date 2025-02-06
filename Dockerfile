@@ -10,8 +10,8 @@ RUN \
   else \
   export GOARCH="amd64"; \
   fi && \
-  go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest && \
-  ~/go/bin/xcaddy build master \
+  GOBIN=/ go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest && \
+  /xcaddy build master \
   --output /caddy \
   --with github.com/caddy-dns/cloudflare \
   --with github.com/WeidiDeng/caddy-cloudflare-ip \
