@@ -3,6 +3,7 @@ FROM --platform=$BUILDPLATFORM chainguard/go:latest-dev AS builder
 ARG TARGETPLATFORM
 
 RUN \
+  GOBIN=/ go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest && \
   if [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
   export GOARCH="arm64"; \
   elif [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
@@ -10,7 +11,6 @@ RUN \
   else \
   export GOARCH="amd64"; \
   fi && \
-  GOBIN=/ go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest && \
   /xcaddy build master \
   --output /caddy \
   --with github.com/caddy-dns/cloudflare \
