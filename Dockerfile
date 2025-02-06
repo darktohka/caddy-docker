@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM caddy:builder-alpine AS builder
+FROM --platform=$BUILDPLATFORM chainguard/go:latest-dev AS builder
 
 ARG TARGETPLATFORM
 
@@ -10,7 +10,9 @@ RUN \
   else \
   export GOARCH="amd64"; \
   fi && \
-  xcaddy build master \
+  go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest && \
+  ~/go/bin/xcaddy build master \
+  --output /caddy \
   --with github.com/caddy-dns/cloudflare \
   --with github.com/WeidiDeng/caddy-cloudflare-ip \
   --with github.com/mholt/caddy-dynamicdns \
@@ -22,7 +24,7 @@ ENV \
   XDG_CONFIG_HOME=/config \
   XDG_DATA_HOME=/data
 
-COPY --from=builder /usr/bin/caddy /caddy
+COPY --from=builder /caddy /caddy
 
 WORKDIR /
 CMD ["/caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
