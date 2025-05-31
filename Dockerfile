@@ -17,7 +17,7 @@ RUN \
   --with github.com/WeidiDeng/caddy-cloudflare-ip \
   --with github.com/mholt/caddy-dynamicdns \
   --with github.com/jonaharagon/caddy-umami \
-  --with github.com/darktohka/caddy-webp-transform
+  --with github.com/darktohka/caddy-webp-optimizer
 
 FROM scratch
 
