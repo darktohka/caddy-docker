@@ -19,7 +19,7 @@ RUN \
   --with github.com/jonaharagon/caddy-umami \
   --with github.com/darktohka/caddy-webp-optimizer
 
-FROM scratch
+FROM chainguard/wolfi-base
 
 ENV \
   XDG_CONFIG_HOME=/config \
