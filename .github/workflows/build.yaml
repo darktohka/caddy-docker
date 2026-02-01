@@ -33,5 +33,7 @@ jobs:
     permissions:
       actions: write
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Keep workflow alive
         uses: gautamkrishnar/keepalive-workflow@v2
