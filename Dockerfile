@@ -46,7 +46,8 @@ RUN \
   --with github.com/WeidiDeng/caddy-cloudflare-ip \
   --with github.com/mholt/caddy-dynamicdns \
   --with github.com/jonaharagon/caddy-umami \
-  --with github.com/mietzen/caddy-dynamicdns-cmd-source
+  --with github.com/mietzen/caddy-dynamicdns-cmd-source \
+  --with github.com/zhangjiayin/caddy-geoip2
 
 FROM chainguard/wolfi-base
 
