@@ -47,7 +47,7 @@ RUN \
   --with github.com/mholt/caddy-dynamicdns \
   --with github.com/jonaharagon/caddy-umami \
   --with github.com/mietzen/caddy-dynamicdns-cmd-source \
-  --with github.com/zhangjiayin/caddy-geoip2 \
+  --with github.com/darktohka/caddy-geoip2 \
   --with github.com/darktohka/caddy-vpn-filter
 
 FROM chainguard/wolfi-base
